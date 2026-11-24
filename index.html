@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111519">
+  <title>SkyGraphite — Civil Air Monitor</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">SG</span><div><b>SKYGRAPHITE</b><small>CIVIL AIR MONITOR</small></div></div>
+      <div class="side-label">РАБОЧАЯ ОБЛАСТЬ</div>
+      <button class="nav-item active"><span>▦</span> Обзор</button>
+      <button class="nav-item" id="historyNav"><span>◷</span> История</button>
+      <button class="nav-item" id="sourcesNav"><span>◈</span> Источники</button>
+      <div class="side-bottom">
+        <div class="secure-note"><span class="dot green"></span><div><b>Публичный режим</b><small>Только гражданские данные</small></div></div>
+        <small class="version">SKYGRAPHITE / 0.1.0</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">РЕГИОНАЛЬНЫЙ МОНИТОРИНГ</div><h1>Обзор обстановки</h1></div>
+        <div class="top-meta"><span class="live-dot"></span><span>СИСТЕМА АКТИВНА</span><span class="clock" id="clock">--:--:--</span></div>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card"><span class="stat-name">ВОЗДУШНАЯ ТРЕВОГА</span><strong id="alertStatus">НЕТ ДАННЫХ</strong><small id="alertUpdated">Источник не подключён</small></article>
+        <article class="stat-card"><span class="stat-name">ИСТОЧНИКИ</span><strong id="sourceCount">0 / 3</strong><small>Подключённые публичные API</small></article>
+        <article class="stat-card"><span class="stat-name">ПОСЛЕДНЯЯ ПРОВЕРКА</span><strong id="lastCheck">—</strong><small>Локальное время браузера</small></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel map-panel">
+          <div class="panel-head"><div><span class="eyebrow">ГЕОГРАФИЧЕСКИЙ СЛОЙ</span><h2>Запорожье · Днепр</h2></div><span class="tag">CIVIL VIEW</span></div>
+          <div class="map-placeholder">
+            <div class="map-grid"></div>
+            <div class="map-ring ring-a"></div><div class="map-ring ring-b"></div>
+            <div class="map-city city-z"><i></i><b>ЗАПОРОЖЬЕ</b><small>Украина</small></div>
+            <div class="map-city city-d"><i></i><b>ДНЕПР</b><small>Украина</small></div>
+            <div class="map-line"></div>
+            <div class="map-caption">СХЕМА РЕГИОНА · НЕ НАВИГАЦИОННАЯ КАРТА</div>
+            <div class="map-legend"><span><i class="legend-green"></i>Без подтверждённой тревоги</span><span><i class="legend-gray"></i>Нет данных</span></div>
+          </div>
+          <p class="disclaimer">Карта не показывает координаты, маршруты или прогнозы движения воздушных объектов. Для решений о безопасности следуйте официальным оповещениям.</p>
+        </article>
+
+        <article class="panel feed-panel" id="sourcesPanel">
+          <div class="panel-head"><div><span class="eyebrow">КАНАЛЫ ДАННЫХ</span><h2>Состояние источников</h2></div><button class="refresh" id="refreshBtn">↻ Проверить</button></div>
+          <div id="sourcesList" class="source-list"></div>
+          <div class="panel-foot">Источники появятся после настройки публичных endpoint-ов в <code>assets/js/config.js</code>.</div>
+        </article>
+      </section>
+
+      <section class="panel events-panel" id="historyPanel">
+        <div class="panel-head"><div><span class="eyebrow">ЖУРНАЛ</span><h2>Последние события</h2></div><span class="tag muted">БЕЗ ТАКТИЧЕСКИХ ТРЕКОВ</span></div>
+        <div class="empty-state"><div class="empty-icon">⌁</div><b>Событий пока нет</b><p>Подключите разрешённый публичный источник гражданских оповещений.</p></div>
+      </section>
+      <footer>SKYGRAPHITE <span>·</span> Независимый гражданский проект <span>·</span> Не является официальной системой оповещения</footer>
+    </main>
+  </div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
